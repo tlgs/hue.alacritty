@@ -20,7 +20,7 @@ EOF
 }
 
 [[ "$1" =~ ^(-h|--help)$ ]] && show_help && exit
-[ -z "$1" ] && die 'ERROR: program requires an argument'
+[ -z "$1" ] && die 'ERROR: missing THEME'
 [ "$#" -ne 1 ] && die 'ERROR: program takes a single argument'
 
 unset tmpfile
