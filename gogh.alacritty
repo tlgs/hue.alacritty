@@ -24,8 +24,6 @@ if [ "$#" -ne 1 ] || [[ "$1" =~ ^(-h|--help)$ ]]; then
   exit
 fi
 
-cd "${BASH_SOURCE%/*}/" || exit
-
 unset tmpfile
 trap '[[ $tmpfile ]] && rm -f "$tmpfile"' EXIT
 tmpfile=$(mktemp)
@@ -37,4 +35,29 @@ status_code=$(curl -s -o "$tmpfile" -w "%{http_code}" "$url")
 # shellcheck disable=SC1090
 source <(sed -n '4,25p' "$tmpfile")
 
-envsubst <template.yaml | tr '[:upper:]' '[:lower:]'
+tr '[:upper:]' '[:lower:]' <<-EOF
+colors:
+  primary:
+    background: '$BACKGROUND_COLOR'
+    foreground: '$FOREGROUND_COLOR'
+
+  normal:
+    black:   '$COLOR_01'
+    red:     '$COLOR_02'
+    green:   '$COLOR_03'
+    yellow:  '$COLOR_04'
+    blue:    '$COLOR_05'
+    magenta: '$COLOR_06'
+    cyan:    '$COLOR_07'
+    white:   '$COLOR_08'
+
+  bright:
+    black:   '$COLOR_09'
+    red:     '$COLOR_10'
+    green:   '$COLOR_11'
+    yellow:  '$COLOR_12'
+    blue:    '$COLOR_13'
+    magenta: '$COLOR_14'
+    cyan:    '$COLOR_15'
+    white:   '$COLOR_16'
+EOF
