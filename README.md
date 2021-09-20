@@ -1,11 +1,27 @@
 # gogh.alacritty
 
-Because I wanted to try out a couple of themes without having an
+Generate an Alacritty compatible colorscheme from the
+[Mayccoll/Gogh](https://github.com/Mayccoll/Gogh)
+repository.
+Simple Bash script built with [curl](https://curl.haxx.se/).
+
+## Motivation
+
+I wanted to try out a couple of themes without having an
 external tool messing with my configs.
 
 ## Usage
 
 ```console
+$ gogh.alacritty -h
+Usage: gogh.alacritty [OPTIONS] THEME
+
+  gogh.alacritty 0.1.0
+  Generate an Alacritty compatible colorscheme from the Mayccoll/Gogh repository.
+
+Options:
+  -h, --help        Show this message and exit.
+
 $ gogh.alacritty panda
 colors:
   primary:
@@ -31,13 +47,4 @@ colors:
     magenta: '#fd95d0'
     cyan:    '#26ffd4'
     white:   '#f0f0f0'
-
-$ gogh.alacritty -h
-Usage: gogh.alacritty [OPTIONS] THEME
-
-  gogh.alacritty 0.1.0
-  Generate an Alacritty compatible colorscheme from the Mayccoll/Gogh repository.
-
-Options:
-  -h, --help        Show this message and exit.
 ```
