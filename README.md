@@ -1,8 +1,9 @@
-# gogh.alacritty
+# hue.alacritty
 
 Generate an Alacritty compatible colorscheme from the
 [Mayccoll/Gogh](https://github.com/Mayccoll/Gogh)
-repository.
+or [mbadolato/iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+repositories.
 Simple Bash script built with [curl](https://curl.haxx.se/).
 
 Because I wanted to try out a couple of themes without having an
@@ -14,7 +15,7 @@ external tool mess with my configs directly.
 $ gogh.alacritty -h
 Usage: gogh.alacritty [OPTIONS] THEME
 
-  gogh.alacritty 0.1.0
+  gogh.alacritty 0.2.0
   Generate an Alacritty compatible colorscheme from the Mayccoll/Gogh repository.
 
 Options:

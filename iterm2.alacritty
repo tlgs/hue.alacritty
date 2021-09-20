@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# Notes:
+#   - Employs simple url-encoding (replaces ' ' with '%20') as the project allows for
+#     filenames with spaces.
+
+version='0.2.0'
+
+die() {
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+show_help() {
+  cat <<-EOF
+Usage: iterm2.alacritty [OPTIONS] THEME
+
+  iterm2.alacritty $version
+  Fetch corresponding Alacritty theme from the mbadolato/iTerm2-Color-Schemes repository.
+
+Options:
+  -h, --help        Show this message and exit.
+EOF
+}
+
+[[ "$1" =~ ^(-h|--help)$ ]] && show_help && exit
+[ -z "$1" ] && die 'ERROR: missing THEME'
+[ "$#" -ne 1 ] && die 'ERROR: program takes a single argument'
+
+unset tmpfile
+trap '[[ $tmpfile ]] && rm -f "$tmpfile"' EXIT
+tmpfile=$(mktemp)
+
+url="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/alacritty/$1.yml"
+status_code=$(curl -s -o "$tmpfile" -w "%{http_code}" "${url// /%20}")
+[ "$status_code" -ne 200 ] && die "ERROR: could not find theme $1"
+
+tail -n +2 "$tmpfile"
