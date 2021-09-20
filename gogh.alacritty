@@ -19,10 +19,9 @@ Options:
 EOF
 }
 
-if [ "$#" -ne 1 ] || [[ "$1" =~ ^(-h|--help)$ ]]; then
-  show_help
-  exit
-fi
+[[ "$1" =~ ^(-h|--help)$ ]] && show_help && exit
+[ -z "$1" ] && die 'ERROR: program requires an argument'
+[ "$#" -ne 1 ] && die 'ERROR: program takes a single argument'
 
 unset tmpfile
 trap '[[ $tmpfile ]] && rm -f "$tmpfile"' EXIT
@@ -30,7 +29,7 @@ tmpfile=$(mktemp)
 
 url="https://raw.githubusercontent.com/Mayccoll/Gogh/master/themes/$1.sh"
 status_code=$(curl -s -o "$tmpfile" -w "%{http_code}" "$url")
-[ "$status_code" -ne 200 ] && die "Could not find theme $1"
+[ "$status_code" -ne 200 ] && die "ERROR: could not find theme $1"
 
 # shellcheck disable=SC1090
 source <(sed -n '4,25p' "$tmpfile")
