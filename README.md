@@ -5,10 +5,8 @@ Generate an Alacritty compatible colorscheme from the
 repository.
 Simple Bash script built with [curl](https://curl.haxx.se/).
 
-## Motivation
-
-I wanted to try out a couple of themes without having an
-external tool messing with my configs.
+Because I wanted to try out a couple of themes without having an
+external tool mess with my configs directly.
 
 ## Usage
 
