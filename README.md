@@ -47,3 +47,11 @@ colors:
     cyan:    '#26ffd4'
     white:   '#f0f0f0'
 ```
+
+If you're importing your colorscheme from an external file, e.g. `colorscheme.yml`,
+you can quickly switch themes:
+
+```console
+$ iterm2.alacritty 'Material' > ~/.config/alacritty/colorscheme.yml \
+  && touch ~/.config/alacritty/alacritty.yml
+```
