@@ -1,0 +1,40 @@
+#!/bin/bash
+
+version='0.1.0'
+
+die() {
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+show_help() {
+  cat <<-EOF
+Usage: gogh.alacritty [OPTIONS] THEME
+
+  gogh.alacritty $version
+  Generate an Alacritty compatible colorscheme from the Mayccoll/Gogh repository.
+
+Options:
+  -h, --help        Show this message and exit.
+EOF
+}
+
+if [ "$#" -ne 1 ] || [[ "$1" =~ ^(-h|--help)$ ]]; then
+  show_help
+  exit
+fi
+
+cd "${BASH_SOURCE%/*}/" || exit
+
+unset tmpfile
+trap '[[ $tmpfile ]] && rm -f "$tmpfile"' EXIT
+tmpfile=$(mktemp)
+
+url="https://raw.githubusercontent.com/Mayccoll/Gogh/master/themes/$1.sh"
+status_code=$(curl -s -o "$tmpfile" -w "%{http_code}" "$url")
+[ "$status_code" -ne 200 ] && die "Could not find theme $1"
+
+# shellcheck disable=SC1090
+source <(sed -n '4,25p' "$tmpfile")
+
+envsubst <template.yaml | tr '[:upper:]' '[:lower:]'
