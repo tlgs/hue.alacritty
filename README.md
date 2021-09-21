@@ -4,7 +4,7 @@ Generate an Alacritty compatible colorscheme from the
 [Mayccoll/Gogh](https://github.com/Mayccoll/Gogh)
 or [mbadolato/iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 repositories.
-Simple Bash script built with [curl](https://curl.haxx.se/).
+Simple Bash scripts built with [curl](https://curl.haxx.se/).
 
 Because I wanted to try out a couple of themes without having an
 external tool mess with my configs directly.
