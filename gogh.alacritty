@@ -9,9 +9,9 @@ die() {
 
 show_help() {
   cat <<- EOF
-Usage: gogh.alacritty [OPTIONS] THEME
+Usage: $(basename "$0") [OPTIONS] THEME
 
-  gogh.alacritty $version
+  $(basename "$0") $version
   Generate an Alacritty compatible colorscheme from the Mayccoll/Gogh repository.
 
 Options:

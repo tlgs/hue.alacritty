@@ -13,9 +13,9 @@ die() {
 
 show_help() {
   cat <<- EOF
-Usage: iterm2.alacritty [OPTIONS] THEME
+Usage: $(basename "$0") [OPTIONS] THEME
 
-  iterm2.alacritty $version
+  $(basename "$0") $version
   Fetch corresponding Alacritty theme from the mbadolato/iTerm2-Color-Schemes repository.
 
 Options:
