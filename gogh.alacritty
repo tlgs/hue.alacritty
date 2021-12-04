@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version='0.2.0'
+version='0.3.0'
 
 die() {
   printf '%s\n' "$1" >&2
@@ -8,7 +8,7 @@ die() {
 }
 
 show_help() {
-  cat <<-EOF
+  cat <<- EOF
 Usage: gogh.alacritty [OPTIONS] THEME
 
   gogh.alacritty $version
@@ -34,7 +34,7 @@ status_code=$(curl -s -o "$tmpfile" -w "%{http_code}" "$url")
 # shellcheck disable=SC1090
 source <(sed -n '4,25p' "$tmpfile")
 
-tr '[:upper:]' '[:lower:]' <<-EOF
+tr '[:upper:]' '[:lower:]' <<- EOF
 colors:
   primary:
     background: '$BACKGROUND_COLOR'

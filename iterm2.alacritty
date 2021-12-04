@@ -4,7 +4,7 @@
 #   - Employs simple url-encoding (replaces ' ' with '%20') as the project allows for
 #     filenames with spaces.
 
-version='0.2.0'
+version='0.3.0'
 
 die() {
   printf '%s\n' "$1" >&2
@@ -12,7 +12,7 @@ die() {
 }
 
 show_help() {
-  cat <<-EOF
+  cat <<- EOF
 Usage: iterm2.alacritty [OPTIONS] THEME
 
   iterm2.alacritty $version
