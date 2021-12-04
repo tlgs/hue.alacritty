@@ -1,0 +1,36 @@
+#!/bin/bash
+
+version='0.3.0'
+
+die() {
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+show_help() {
+  cat <<- EOF
+Usage: $(basename "$0") [OPTIONS]
+
+  $(basename "$0") $version
+  Print a table with standard 16 terminal colors.
+
+Options:
+  -h, --help        Show this message and exit.
+EOF
+}
+
+[[ "$1" =~ ^(-h|--help)$ ]] && show_help && exit
+
+printf "┌────────┬─────────────────┐\n"
+for i in {1..16}; do
+  if [ $(((i - 1) % 8)) -eq 0 ]; then
+    printf "│ %02d..%02d │ " "$i" "$((i + 7))"
+  fi
+
+  printf "%s●%s " "$(tput setaf "$i")" "$(tput sgr0)"
+
+  if [ $((i % 8)) -eq 0 ]; then
+    printf "│\n"
+  fi
+done
+printf "└────────┴─────────────────┘\n"
