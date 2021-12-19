@@ -15,7 +15,7 @@ external tool mess with my configs directly.
 $ gogh.alacritty -h
 Usage: gogh.alacritty [OPTIONS] THEME
 
-  gogh.alacritty 0.2.0
+  gogh.alacritty 0.3.0
   Generate an Alacritty compatible colorscheme from the Mayccoll/Gogh repository.
 
 Options:
@@ -46,6 +46,12 @@ colors:
     magenta: '#fd95d0'
     cyan:    '#26ffd4'
     white:   '#f0f0f0'
+
+$ colortable.alacritty
+┌────────┬─────────────────┐
+│ 01..08 │ ● ● ● ● ● ● ● ● │
+│ 09..16 │ ● ● ● ● ● ● ● ● │
+└────────┴─────────────────┘
 ```
 
 If you're importing your colorscheme from an external file, e.g. `colorscheme.yml`,
